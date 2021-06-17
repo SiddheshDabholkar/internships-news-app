@@ -35,7 +35,6 @@ const RemoveButton = styled.button`
 `;
 
 export default function HNewsCard({ data }) {
-  // console.log(data);
   return (
     <>
       <HNewsCardContainer>

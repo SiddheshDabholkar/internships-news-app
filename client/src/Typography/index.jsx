@@ -18,6 +18,7 @@ export const SmallCardParagraph = styled.p`
   font-size: 12px;
   padding: 0;
   margin: 1%;
+  color: ${({ grey }) => (grey ? "grey" : "#000")};
 `;
 
 export const LargeCardHeader = styled.h1`
