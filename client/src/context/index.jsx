@@ -1,5 +1,5 @@
 export const initialState = {
-  toggle: false,
+  toggle: true,
   modal: false,
 };
 

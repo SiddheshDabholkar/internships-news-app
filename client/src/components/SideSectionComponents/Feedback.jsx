@@ -4,7 +4,7 @@ import { Card } from "../Card";
 import { LargeCardHeader } from "../../Typography";
 import { Context } from "../../App";
 
-const Button = styled.button`
+export const Button = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -15,7 +15,12 @@ const Button = styled.button`
   background-color: #36d88d;
   border-radius: 5px;
   border-color: transparent;
-  font-weight: 900;
+  font-weight: bolder;
+  font-size: 16px;
+`;
+
+const SButton = styled(Button)`
+  background-color: #ee3131a3;
 `;
 
 export default function Feedback() {
@@ -24,17 +29,39 @@ export default function Feedback() {
     dispatch,
   } = useContext(Context);
 
+  const SelectButton = () => {
+    if (modal) {
+      return (
+        <>
+          <SButton
+            onClick={() => {
+              dispatch({ type: "modal", payload: !modal });
+            }}
+          >
+            We're Listening
+          </SButton>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Button
+            onClick={() => {
+              dispatch({ type: "modal", payload: !modal });
+            }}
+          >
+            We're Listening
+          </Button>
+        </>
+      );
+    }
+  };
+
   return (
     <>
       <Card width="100%" m="10px" height="25%" br="8px" col>
         <LargeCardHeader>Have a Feedback?</LargeCardHeader>
-        <Button
-          onClick={() => {
-            dispatch({ type: "modal", payload: !modal });
-          }}
-        >
-          We're Listening
-        </Button>
+        <SelectButton />
       </Card>
     </>
   );
