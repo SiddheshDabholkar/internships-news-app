@@ -34,9 +34,6 @@ export default function NewsSection() {
       .catch((error) => setError(error.message));
   }, []);
   console.log("home", news);
-  // console.log(state.modal);
-  // console.log(context);
-  // console.log(state);
 
   const ToggleSelection = () => {
     if (state.toggle) {

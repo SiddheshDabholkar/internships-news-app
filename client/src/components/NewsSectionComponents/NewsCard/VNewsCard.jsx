@@ -24,7 +24,7 @@ const DeleteIconContainer = styled.div`
 const Image = styled.img`
   width: 100%;
   background-color: bisque;
-  min-height: 50%;
+  min-height: 45%;
 `;
 const SmallHeaderContainer = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ const SmallHeaderContainer = styled.div`
   padding: 0;
   margin: 0;
 `;
-const SSmallCardHeader = styled(SmallCardHeader)`
+export const SSmallCardHeader = styled(SmallCardHeader)`
   flex-wrap: wrap;
   width: 100%;
   font-size: 16px;
@@ -53,7 +53,7 @@ const SmallCardParaContainer = styled.div`
   margin: 0;
   flex-wrap: wrap;
 `;
-const SSmallCardParagraph = styled(SmallCardParagraph)`
+export const SSmallCardParagraph = styled(SmallCardParagraph)`
   flex-wrap: wrap;
   width: 100%;
   font-size: 12px;
