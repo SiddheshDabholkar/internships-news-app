@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { AiOutlineBars } from "react-icons/ai";
 import { BsCardHeading } from "react-icons/bs";
 import { useState, useContext } from "react";
-import { toggleContext } from "../../App";
+import { Context } from "../../App";
 
 const ToggleButtonContainer = styled.div`
   display: flex;
@@ -52,7 +52,10 @@ const MutatedRightButton = styled(ButtonRight)`
 `;
 export default function ViewToggle() {
   const [isRow, setIsRow] = useState(true);
-  const { state, dispatch } = useContext(toggleContext);
+  const {
+    state: { toggle },
+    dispatch,
+  } = useContext(Context);
 
   const DecideButtonStyles = () => {
     if (isRow) {

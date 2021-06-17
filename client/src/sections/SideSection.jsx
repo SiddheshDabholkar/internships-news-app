@@ -1,9 +1,10 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { MainContainer } from "../container/MainContainer";
 import Reader from "../components/SideSectionComponents/Reader";
 import Feedback from "../components/SideSectionComponents/Feedback";
 import ViewToggle from "../components/SideSectionComponents/ViewToggle";
+import FeedBackModal from "../components/Modal/FeedbackModal";
 
 const SideSectionContainer = styled(MainContainer)`
   border-top-right-radius: 19px;

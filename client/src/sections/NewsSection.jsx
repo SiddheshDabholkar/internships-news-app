@@ -4,7 +4,7 @@ import HNewsCard from "../components/NewsSectionComponents/NewsCard/HNewsCard";
 import VNewsCard from "../components/NewsSectionComponents/NewsCard/VNewsCard";
 import styled from "styled-components";
 import Pagination from "../components/NewsSectionComponents/Pagination/Pagination";
-import { toggleContext } from "../App";
+import { Context } from "../App";
 
 const url = "https://api.first.org/data/v1/news";
 
@@ -19,7 +19,7 @@ const VNewsCardContainer = styled.div`
 `;
 
 export default function NewsSection() {
-  const { state } = useContext(toggleContext);
+  const { state } = useContext(Context);
   const [news, setNews] = useState([]);
   const [error, setError] = useState("");
   useEffect(() => {
@@ -34,10 +34,12 @@ export default function NewsSection() {
       .catch((error) => setError(error.message));
   }, []);
   console.log("home", news);
-  console.log(state);
+  // console.log(state.modal);
+  // console.log(context);
+  // console.log(state);
 
   const ToggleSelection = () => {
-    if (state) {
+    if (state.toggle) {
       return (
         <>
           <Pagination

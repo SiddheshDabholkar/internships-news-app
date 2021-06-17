@@ -19,9 +19,14 @@ const Button = styled.button`
   justify-content: center;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #fff;
   box-shadow: 0 5px 10px #8484844f, 0 15px 40px rgba(166, 173, 201, 0.2);
 `;
+
+const UnSelectedButton = styled(Button)`
+  background-color: grey;
+  color: #fff;
+`;
+
 export default function Pagination({
   data,
   RenderComponent,
@@ -57,11 +62,13 @@ export default function Pagination({
       ))}
       <ButtonContainer>
         <Button onClick={goToPreviousPage}>{"<<"}</Button>
+
         {getPaginationGroup().map((item, index) => (
           <Button key={index} onClick={changePage}>
             <span>{item}</span>
           </Button>
         ))}
+
         <Button onClick={goToNextPage}>{">>"}</Button>
       </ButtonContainer>
     </>

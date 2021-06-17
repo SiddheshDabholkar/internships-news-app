@@ -1,7 +1,8 @@
-import React from "react";
-import { Card } from "../Card";
 import styled from "styled-components";
+import { useContext } from "react";
+import { Card } from "../Card";
 import { LargeCardHeader } from "../../Typography";
+import { Context } from "../../App";
 
 const Button = styled.button`
   display: flex;
@@ -18,11 +19,22 @@ const Button = styled.button`
 `;
 
 export default function Feedback() {
+  const {
+    state: { modal },
+    dispatch,
+  } = useContext(Context);
+
   return (
     <>
       <Card width="100%" m="10px" height="25%" br="8px" col>
         <LargeCardHeader>Have a Feedback?</LargeCardHeader>
-        <Button>We're Listening</Button>
+        <Button
+          onClick={() => {
+            dispatch({ type: "modal", payload: !modal });
+          }}
+        >
+          We're Listening
+        </Button>
       </Card>
     </>
   );

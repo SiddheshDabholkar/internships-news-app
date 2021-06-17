@@ -1,10 +1,11 @@
-import { useReducer, useContext, createContext } from "react";
+import { useReducer, createContext } from "react";
 import styled from "styled-components";
 import NewsSection from "./sections/NewsSection";
 import SideSection from "./sections/SideSection";
 import { initialState, reducer } from "./context";
+import FeedBackModal from "./components/Modal/FeedbackModal";
 
-export const toggleContext = createContext();
+export const Context = createContext();
 
 const RootContainer = styled.div`
   display: flex;
@@ -18,14 +19,16 @@ const RootContainer = styled.div`
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <>
-      <toggleContext.Provider value={{ state, dispatch }}>
+      <Context.Provider value={{ state, dispatch }}>
         <RootContainer>
           <SideSection />
           <NewsSection />
+          <FeedBackModal />
         </RootContainer>
-      </toggleContext.Provider>
+      </Context.Provider>
     </>
   );
 }
