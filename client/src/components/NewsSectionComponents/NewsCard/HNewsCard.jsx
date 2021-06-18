@@ -14,6 +14,9 @@ const HNewsCardContainer = styled.div`
   padding: 10px;
   margin-top: 15px;
   cursor: pointer;
+  @media (max-width: 425px) {
+    padding: 6px;
+  }
 `;
 const RemoveIconContainer = styled.div`
   display: flex;
@@ -49,6 +52,10 @@ const Icon = styled.img`
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  @media (max-width: 425px) {
+    height: 30px;
+    width: 30px;
+  }
 `;
 const RestContainer = styled.div`
   display: flex;
@@ -57,6 +64,9 @@ const RestContainer = styled.div`
   justify-content: flex-start;
   width: 90%;
   height: 98%;
+  @media (max-width: 425px) {
+    padding: 3%;
+  }
 `;
 const SHeader = styled(SmallCardHeader)`
   display: flex;
@@ -64,6 +74,9 @@ const SHeader = styled(SmallCardHeader)`
   width: 100%;
   line-height: 0;
   font-size: 16px;
+  @media (max-width: 425px) {
+    font-size: 12px;
+  }
 `;
 const SParagraph = styled(SmallCardParagraph)`
   display: flex;
@@ -73,9 +86,23 @@ const SParagraph = styled(SmallCardParagraph)`
   font-size: 13px;
   margin-top: 2%;
   color: ${({ grey }) => (grey ? "#6a6a6a" : "#000")};
+  @media (max-width: 425px) {
+    font-size: 10px;
+    height: 30px;
+    line-height: 12px;
+  }
 `;
 const truncate = (str) => {
-  return str && str.length > 100 ? str.substring(0, 99) + "...." : str;
+  return str && str.length > 95 ? str.substring(0, 94) + "...." : str;
+};
+const truncateHeader = (str) => {
+  if (window.innerWidth > 425) {
+    return str && str.length > 100 ? str.substring(0, 99) + "...." : str;
+  } else if (window.innerWidth < 355) {
+    return str && str.length > 32 ? str.substring(0, 31) + "...." : str;
+  } else {
+    return str && str.length > 40 ? str.substring(0, 39) + "...." : str;
+  }
 };
 
 export default function HNewsCard({ data }) {
@@ -107,7 +134,7 @@ export default function HNewsCard({ data }) {
             <Icon src={`${process.env.PUBLIC_URL}/avatar.jpg`} />
           </IconContainer>
           <RestContainer>
-            <SHeader>{title}</SHeader>
+            <SHeader>{truncateHeader(title)}</SHeader>
             <SParagraph>{truncate(summary)}</SParagraph>
             <SParagraph grey>{published}</SParagraph>
           </RestContainer>

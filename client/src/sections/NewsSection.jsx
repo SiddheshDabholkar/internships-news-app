@@ -18,6 +18,12 @@ const VNewsCardContainer = styled.div`
   height: inherit;
 `;
 
+const Root = styled(MainContainer)`
+  @media (max-width: 425px) {
+    width: 100%;
+  }
+`;
+
 export default function NewsSection() {
   const { state, dispatch } = useContext(Context);
   const [error, setError] = useState("");
@@ -63,9 +69,9 @@ export default function NewsSection() {
   };
   return (
     <>
-      <MainContainer>
+      <Root>
         <ToggleSelection />
-      </MainContainer>
+      </Root>
     </>
   );
 }

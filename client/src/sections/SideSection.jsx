@@ -9,6 +9,9 @@ const SideSectionContainer = styled(MainContainer)`
   border-bottom-right-radius: 19px;
   backdrop-filter: blur(0px);
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px #42424233;
+  @media (max-width: 425px) {
+    display: none;
+  }
 `;
 
 export const Container = styled.div`
