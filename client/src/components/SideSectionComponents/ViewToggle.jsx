@@ -65,6 +65,7 @@ export default function ViewToggle() {
             onClick={() => {
               setIsRow(false);
               dispatch({ type: "toggle", payload: false });
+              dispatch({ type: "navbar", payload: false });
             }}
           >
             <BsCardHeading style={{ fontSize: "30px" }} />
@@ -73,6 +74,7 @@ export default function ViewToggle() {
             onClick={() => {
               setIsRow(true);
               dispatch({ type: "toggle", payload: true });
+              dispatch({ type: "navbar", payload: false });
             }}
           >
             <AiOutlineBars style={{ fontSize: "30px" }} />
@@ -86,6 +88,7 @@ export default function ViewToggle() {
             onClick={() => {
               setIsRow(false);
               dispatch({ type: "toggle", payload: false });
+              dispatch({ type: "navbar", payload: false });
             }}
           >
             <BsCardHeading style={{ fontSize: "30px" }} />
@@ -94,6 +97,7 @@ export default function ViewToggle() {
             onClick={() => {
               setIsRow(true);
               dispatch({ type: "toggle", payload: true });
+              dispatch({ type: "navbar", payload: false });
             }}
           >
             <AiOutlineBars style={{ fontSize: "30px" }} />

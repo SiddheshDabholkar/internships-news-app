@@ -5,6 +5,8 @@ import SideSection from "./sections/SideSection";
 import { initialState, reducer } from "./context";
 import FeedBackModal from "./components/Modal/FeedbackModal";
 import NewsModal from "./components/Modal/NewsModal";
+import Navbar from "./sections/Navbar";
+import NavbarModal from "./components/Modal/NavbarModal";
 
 export const Context = createContext();
 
@@ -14,7 +16,7 @@ const RootContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: aliceblue;
 `;
 
@@ -24,12 +26,14 @@ function App() {
   return (
     <>
       <Context.Provider value={{ state, dispatch }}>
+        <Navbar />
         <RootContainer>
           <SideSection />
           <NewsSection />
           <FeedBackModal />
           <NewsModal />
         </RootContainer>
+        <NavbarModal />
       </Context.Provider>
     </>
   );

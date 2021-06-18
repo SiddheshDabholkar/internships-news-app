@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { Card } from "../../Card";
 import { ImCross } from "react-icons/im";
 import { SmallCardHeader, SmallCardParagraph } from "../../../Typography/index";
 import { Context } from "../../../App";
+import useWindowSize from "../../../Hooks/useWindow";
 
 const HNewsCardContainer = styled.div`
   display: flex;
@@ -47,6 +48,10 @@ const IconContainer = styled.div`
   align-items: center;
   width: 10%;
   height: 98%;
+  margin: 2%;
+  @media (max-width: 700px) {
+    margin: 4%;
+  }
 `;
 const Icon = styled.img`
   height: 50px;
@@ -61,9 +66,10 @@ const RestContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   width: 90%;
   height: 98%;
+  margin: 2% 1%;
   @media (max-width: 425px) {
     padding: 3%;
   }
@@ -74,9 +80,6 @@ const SHeader = styled(SmallCardHeader)`
   width: 100%;
   line-height: 0;
   font-size: 16px;
-  @media (max-width: 425px) {
-    font-size: 12px;
-  }
 `;
 const SParagraph = styled(SmallCardParagraph)`
   display: flex;
@@ -86,26 +89,10 @@ const SParagraph = styled(SmallCardParagraph)`
   font-size: 13px;
   margin-top: 2%;
   color: ${({ grey }) => (grey ? "#6a6a6a" : "#000")};
-  @media (max-width: 425px) {
-    font-size: 10px;
-    height: 30px;
-    line-height: 12px;
-  }
 `;
-const truncate = (str) => {
-  return str && str.length > 95 ? str.substring(0, 94) + "...." : str;
-};
-const truncateHeader = (str) => {
-  if (window.innerWidth > 425) {
-    return str && str.length > 100 ? str.substring(0, 99) + "...." : str;
-  } else if (window.innerWidth < 355) {
-    return str && str.length > 32 ? str.substring(0, 31) + "...." : str;
-  } else {
-    return str && str.length > 40 ? str.substring(0, 39) + "...." : str;
-  }
-};
 
 export default function HNewsCard({ data }) {
+  const { width, height } = useWindowSize();
   const { title, published, link, summary, id } = data;
   const { state, dispatch } = useContext(Context);
   const handleClick = () => {
@@ -119,6 +106,60 @@ export default function HNewsCard({ data }) {
     if (index === -1) return;
     newState.news.splice(index, 1);
     dispatch({ type: "news", payload: newState.news });
+  };
+  const truncate = (str) => {
+    if (width > 1200) {
+      return str && str.length > 105 ? str.substring(0, 104) + "...." : str;
+    } else if (width > 1100) {
+      return str && str.length > 90 ? str.substring(0, 89) + "...." : str;
+    } else if (width > 1000) {
+      return str && str.length > 80 ? str.substring(0, 79) + "...." : str;
+    } else if (width > 900) {
+      return str && str.length > 70 ? str.substring(0, 69) + "...." : str;
+    } else if (width > 800) {
+      return str && str.length > 65 ? str.substring(0, 64) + "...." : str;
+    } else if (width > 700) {
+      return str && str.length > 41 ? str.substring(0, 40) + "...." : str;
+    } else if (width > 600) {
+      return str && str.length > 36 ? str.substring(0, 33) + "...." : str;
+    } else if (width > 500) {
+      return str && str.length > 50 ? str.substring(0, 49) + "...." : str;
+    } else if (width > 400) {
+      return str && str.length > 29 ? str.substring(0, 30) + "...." : str;
+    } else if (width > 300) {
+      return str && str.length > 20 ? str.substring(0, 19) + "...." : str;
+    } else if (width > 200) {
+      return str && str.length > 20 ? str.substring(0, 19) + "...." : str;
+    } else {
+      return str && str.length > 15 ? str.substring(0, 14) + "...." : str;
+    }
+  };
+  const truncateHeader = (str) => {
+    if (width > 1200) {
+      return str && str.length > 90 ? str.substring(0, 89) + "...." : str;
+    } else if (width > 1100) {
+      return str && str.length > 85 ? str.substring(0, 74) + "...." : str;
+    } else if (width > 1000) {
+      return str && str.length > 68 ? str.substring(0, 67) + "...." : str;
+    } else if (width > 900) {
+      return str && str.length > 65 ? str.substring(0, 64) + "...." : str;
+    } else if (width > 800) {
+      return str && str.length > 55 ? str.substring(0, 54) + "...." : str;
+    } else if (width > 700) {
+      return str && str.length > 45 ? str.substring(0, 41) + "...." : str;
+    } else if (width > 600) {
+      return str && str.length > 31 ? str.substring(0, 30) + "...." : str;
+    } else if (width > 500) {
+      return str && str.length > 39 ? str.substring(0, 38) + "...." : str;
+    } else if (width > 400) {
+      return str && str.length > 25 ? str.substring(0, 24) + "...." : str;
+    } else if (width > 300) {
+      return str && str.length > 25 ? str.substring(0, 24) + "...." : str;
+    } else if (width > 200) {
+      return str && str.length > 20 ? str.substring(0, 19) + "...." : str;
+    } else {
+      return str && str.length > 15 ? str.substring(0, 14) + "...." : str;
+    }
   };
   return (
     <>

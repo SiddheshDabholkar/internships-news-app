@@ -5,6 +5,34 @@ import { ImCross } from "react-icons/im";
 import { SmallCardHeader, SmallCardParagraph } from "../../../Typography";
 import { Context } from "../../../App";
 
+const SCard = styled(Card)`
+  width: 24%;
+  height: 40%;
+  cursor: pointer;
+  @media (min-width: 1440px) {
+    width: 24%;
+    height: 50%;
+  }
+  @media (max-width: 1024px) {
+    width: 24%;
+    height: 40%;
+  }
+  @media (max-width: 900px) {
+    width: 25%;
+    height: 40%;
+  }
+  @media (max-width: 790px) {
+    width: 30%;
+    height: 40%;
+  }
+  @media (max-width: 600px) {
+    flex-direction: column;
+    width: 90% !important;
+    padding: 5px;
+    margin-bottom: 0;
+  }
+`;
+
 const CardIn = styled.div`
   display: flex;
   flex-direction: column;
@@ -92,15 +120,7 @@ export default function VNewsCard({ data }) {
 
   return (
     <>
-      <Card
-        width="24%"
-        padding="10px"
-        br="8px"
-        height="40%"
-        m="15px"
-        style={{ cursor: "pointer" }}
-        id={id}
-      >
+      <SCard padding="10px" br="8px" m="15px" id={id}>
         <CardIn>
           <DeleteIconContainer>
             <ImCross
@@ -119,7 +139,7 @@ export default function VNewsCard({ data }) {
             <Image src={link} />
           </RestContainer>
         </CardIn>
-      </Card>
+      </SCard>
     </>
   );
 }

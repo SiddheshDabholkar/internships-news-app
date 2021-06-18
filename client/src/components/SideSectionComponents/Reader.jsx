@@ -18,10 +18,27 @@ const Avatar = styled.img`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  @media (max-width: 560px) {
+    height: 28px;
+    width: 28px;
+  }
+  @media (max-width: 760px) {
+    height: 30px;
+    width: 30px;
+  }
+  @media (max-width: 920px) {
+    height: 39px;
+    width: 39px;
+  }
+  @media (max-width: 1024px) {
+    height: 42px;
+    width: 42px;
+  }
+  @media (min-width: 1024px) {
+    height: 48px;
+    width: 48px;
+  }
 `;
-
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;

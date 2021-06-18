@@ -4,6 +4,7 @@ export const initialState = {
   newsmodal: false,
   link: "",
   news: [],
+  navbar: false,
 };
 
 export const reducer = (state, action) => {
@@ -35,6 +36,12 @@ export const reducer = (state, action) => {
     return {
       ...state,
       news: action.payload,
+    };
+  }
+  if (action.type === "navbar") {
+    return {
+      ...state,
+      navbar: action.payload,
     };
   }
   return state;

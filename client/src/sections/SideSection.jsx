@@ -8,8 +8,18 @@ const SideSectionContainer = styled(MainContainer)`
   border-top-right-radius: 19px;
   border-bottom-right-radius: 19px;
   backdrop-filter: blur(0px);
+  height: 100%;
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px #42424233;
-  @media (max-width: 425px) {
+
+  top: 0;
+  left: 0;
+  position: fixed;
+  margin: 0;
+  background-color: aliceblue;
+  @media (max-width: 790px) {
+    width: 30%;
+  }
+  @media (max-width: 600px) {
     display: none;
   }
 `;

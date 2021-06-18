@@ -25,7 +25,7 @@ const SButton = styled(Button)`
 
 export default function Feedback() {
   const {
-    state: { modal },
+    state: { modal, navbar },
     dispatch,
   } = useContext(Context);
 
@@ -36,6 +36,7 @@ export default function Feedback() {
           <SButton
             onClick={() => {
               dispatch({ type: "modal", payload: !modal });
+              dispatch({ type: "navbar", payload: false });
             }}
           >
             We're Listening
@@ -48,6 +49,7 @@ export default function Feedback() {
           <Button
             onClick={() => {
               dispatch({ type: "modal", payload: !modal });
+              dispatch({ type: "navbar", payload: false });
             }}
           >
             We're Listening

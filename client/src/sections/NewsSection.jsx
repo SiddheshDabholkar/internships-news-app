@@ -16,11 +16,24 @@ const VNewsCardContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: inherit;
+  @media (max-width: 425px) {
+    flex-direction: column;
+    height: auto;
+    flex-wrap: nowrap;
+  }
 `;
 
 const Root = styled(MainContainer)`
-  @media (max-width: 425px) {
+  top: 0;
+  right: 0;
+  position: absolute;
+  margin: 0;
+  @media (max-width: 790px) {
+    width: 70%;
+  }
+  @media (max-width: 600px) {
     width: 100%;
+    margin-top: 50px;
   }
 `;
 
