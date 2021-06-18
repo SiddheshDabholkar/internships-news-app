@@ -39,7 +39,6 @@ const Root = styled(MainContainer)`
 
 export default function NewsSection() {
   const { state, dispatch } = useContext(Context);
-  const [error, setError] = useState("");
   useEffect(() => {
     fetch(url)
       .then((res) => {
@@ -48,9 +47,9 @@ export default function NewsSection() {
       })
       .then((news) => {
         dispatch({ type: "news", payload: news.data });
-      })
-      .catch((error) => setError(error.message));
-  });
+      });
+    // .catch((error) => console.log(error.message));
+  }, []);
   console.log("home", state.news);
 
   const ToggleSelection = () => {
