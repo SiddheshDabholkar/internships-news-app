@@ -52,10 +52,7 @@ const MutatedRightButton = styled(ButtonRight)`
 `;
 export default function ViewToggle() {
   const [isRow, setIsRow] = useState(true);
-  const {
-    state: { toggle },
-    dispatch,
-  } = useContext(Context);
+  const { dispatch } = useContext(Context);
 
   const DecideButtonStyles = () => {
     if (isRow) {

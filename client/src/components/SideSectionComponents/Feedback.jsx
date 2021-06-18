@@ -25,7 +25,7 @@ const SButton = styled(Button)`
 
 export default function Feedback() {
   const {
-    state: { modal, navbar },
+    state: { modal },
     dispatch,
   } = useContext(Context);
 

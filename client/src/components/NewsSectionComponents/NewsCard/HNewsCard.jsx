@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { Card } from "../../Card";
 import { ImCross } from "react-icons/im";
@@ -92,7 +92,7 @@ const SParagraph = styled(SmallCardParagraph)`
 `;
 
 export default function HNewsCard({ data }) {
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
   const { title, published, link, summary, id } = data;
   const { state, dispatch } = useContext(Context);
   const handleClick = () => {

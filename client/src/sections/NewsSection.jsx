@@ -50,7 +50,7 @@ export default function NewsSection() {
         dispatch({ type: "news", payload: news.data });
       })
       .catch((error) => setError(error.message));
-  }, []);
+  });
   console.log("home", state.news);
 
   const ToggleSelection = () => {

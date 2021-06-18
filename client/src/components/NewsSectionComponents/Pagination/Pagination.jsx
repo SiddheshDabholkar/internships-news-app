@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { MainContainer } from "../../../container/MainContainer";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -22,18 +21,13 @@ const Button = styled.button`
   box-shadow: 0 5px 10px #8484844f, 0 15px 40px rgba(166, 173, 201, 0.2);
 `;
 
-const UnSelectedButton = styled(Button)`
-  background-color: grey;
-  color: #fff;
-`;
-
 export default function Pagination({
   data,
   RenderComponent,
   pageLimit,
   dataLimit,
 }) {
-  const [pages] = useState(Math.round(data.length / dataLimit));
+  // const [pages] = useState(Math.round(data.length / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
   function goToNextPage() {
     setCurrentPage((page) => page + 1);
