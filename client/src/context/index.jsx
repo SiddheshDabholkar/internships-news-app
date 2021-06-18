@@ -3,6 +3,7 @@ export const initialState = {
   modal: false,
   newsmodal: false,
   link: "",
+  news: [],
 };
 
 export const reducer = (state, action) => {
@@ -28,6 +29,12 @@ export const reducer = (state, action) => {
     return {
       ...state,
       link: action.payload,
+    };
+  }
+  if (action.type === "news") {
+    return {
+      ...state,
+      news: action.payload,
     };
   }
   return state;

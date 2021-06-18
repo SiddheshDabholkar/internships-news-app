@@ -19,8 +19,7 @@ const VNewsCardContainer = styled.div`
 `;
 
 export default function NewsSection() {
-  const { state } = useContext(Context);
-  const [news, setNews] = useState([]);
+  const { state, dispatch } = useContext(Context);
   const [error, setError] = useState("");
   useEffect(() => {
     fetch(url)
@@ -29,18 +28,18 @@ export default function NewsSection() {
         throw new Error("Something went wrong while fetching news");
       })
       .then((news) => {
-        setNews(news.data);
+        dispatch({ type: "news", payload: news.data });
       })
       .catch((error) => setError(error.message));
   }, []);
-  console.log("home", news);
+  console.log("home", state.news);
 
   const ToggleSelection = () => {
     if (state.toggle) {
       return (
         <>
           <Pagination
-            data={news}
+            data={state.news}
             RenderComponent={HNewsCard}
             pageLimit={3}
             dataLimit={5}
@@ -52,7 +51,7 @@ export default function NewsSection() {
         <>
           <VNewsCardContainer>
             <Pagination
-              data={news}
+              data={state.news}
               RenderComponent={VNewsCard}
               pageLimit={3}
               dataLimit={6}

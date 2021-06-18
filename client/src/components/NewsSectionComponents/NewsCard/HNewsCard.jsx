@@ -31,6 +31,7 @@ const RemoveButton = styled.button`
   padding: 10px;
   color: red;
   border-color: transparent;
+  cursor: pointer;
   border-radius: 50%;
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
     0 15px 40px rgba(166, 173, 201, 0.2);
@@ -78,16 +79,30 @@ const truncate = (str) => {
 };
 
 export default function HNewsCard({ data }) {
-  const { title, published, link, summary } = data;
+  const { title, published, link, summary, id } = data;
   const { state, dispatch } = useContext(Context);
   const handleClick = () => {
     dispatch({ type: "link", payload: link });
     dispatch({ type: "newsmodal", payload: true });
   };
+  const handleRemoveCard = (id) => {
+    console.log(id);
+    const newState = state;
+    const index = newState.news.findIndex((n) => n.id === id);
+    if (index === -1) return;
+    newState.news.splice(index, 1);
+    dispatch({ type: "news", payload: newState.news });
+  };
   return (
     <>
-      <HNewsCardContainer onClick={handleClick}>
-        <Card width="90%" padding="8px" br="10px" height="70px">
+      <HNewsCardContainer id={id}>
+        <Card
+          width="90%"
+          padding="8px"
+          br="10px"
+          height="70px"
+          onClick={handleClick}
+        >
           <IconContainer>
             <Icon src={`${process.env.PUBLIC_URL}/avatar.jpg`} />
           </IconContainer>
@@ -98,7 +113,7 @@ export default function HNewsCard({ data }) {
           </RestContainer>
         </Card>
         <RemoveIconContainer>
-          <RemoveButton>
+          <RemoveButton onClick={() => handleRemoveCard(id)}>
             <ImCross />
           </RemoveButton>
         </RemoveIconContainer>

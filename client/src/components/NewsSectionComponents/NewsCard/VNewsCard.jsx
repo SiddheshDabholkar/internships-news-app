@@ -22,6 +22,14 @@ const DeleteIconContainer = styled.div`
   width: 100%;
   height: 10%;
 `;
+const RestContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 90%;
+`;
 const Image = styled.img`
   width: 100%;
   background-color: bisque;
@@ -67,12 +75,21 @@ const truncate = (str) => {
 };
 
 export default function VNewsCard({ data }) {
-  const { title, published, link, summary } = data;
+  const { title, published, link, summary, id } = data;
   const { state, dispatch } = useContext(Context);
   const handleClick = () => {
     dispatch({ type: "link", payload: link });
     dispatch({ type: "newsmodal", payload: true });
   };
+  const handleRemoveCard = (id) => {
+    console.log(id);
+    const newState = state;
+    const index = newState.news.findIndex((n) => n.id === id);
+    if (index === -1) return;
+    newState.news.splice(index, 1);
+    dispatch({ type: "news", payload: newState.news });
+  };
+
   return (
     <>
       <Card
@@ -81,21 +98,26 @@ export default function VNewsCard({ data }) {
         br="8px"
         height="40%"
         m="15px"
-        onClick={handleClick}
         style={{ cursor: "pointer" }}
+        id={id}
       >
         <CardIn>
           <DeleteIconContainer>
-            <ImCross style={{ color: "red" }} />
+            <ImCross
+              style={{ color: "red", cursor: "pointer" }}
+              onClick={() => handleRemoveCard(id)}
+            />
           </DeleteIconContainer>
-          <SmallHeaderContainer>
-            <SSmallCardHeader>{truncate(title)}</SSmallCardHeader>
-          </SmallHeaderContainer>
-          <SmallCardParaContainer>
-            <SSmallCardParagraph>{truncate(summary)}</SSmallCardParagraph>
-          </SmallCardParaContainer>
-          <SmallCardParagraph grey>{published}</SmallCardParagraph>
-          <Image src={link} />
+          <RestContainer onClick={handleClick}>
+            <SmallHeaderContainer>
+              <SSmallCardHeader>{truncate(title)}</SSmallCardHeader>
+            </SmallHeaderContainer>
+            <SmallCardParaContainer>
+              <SSmallCardParagraph>{truncate(summary)}</SSmallCardParagraph>
+            </SmallCardParaContainer>
+            <SmallCardParagraph grey>{published}</SmallCardParagraph>
+            <Image src={link} />
+          </RestContainer>
         </CardIn>
       </Card>
     </>
