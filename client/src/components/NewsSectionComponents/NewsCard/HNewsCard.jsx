@@ -1,8 +1,10 @@
-import React from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { Card } from "../../Card";
 import { ImCross } from "react-icons/im";
 import { SmallCardHeader, SmallCardParagraph } from "../../../Typography/index";
+import { Context } from "../../../App";
+
 const HNewsCardContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -11,6 +13,7 @@ const HNewsCardContainer = styled.div`
   width: 90%;
   padding: 10px;
   margin-top: 15px;
+  cursor: pointer;
 `;
 const RemoveIconContainer = styled.div`
   display: flex;
@@ -76,9 +79,14 @@ const truncate = (str) => {
 
 export default function HNewsCard({ data }) {
   const { title, published, link, summary } = data;
+  const { state, dispatch } = useContext(Context);
+  const handleClick = () => {
+    dispatch({ type: "link", payload: link });
+    dispatch({ type: "newsmodal", payload: true });
+  };
   return (
     <>
-      <HNewsCardContainer>
+      <HNewsCardContainer onClick={handleClick}>
         <Card width="90%" padding="8px" br="10px" height="70px">
           <IconContainer>
             <Icon src={`${process.env.PUBLIC_URL}/avatar.jpg`} />

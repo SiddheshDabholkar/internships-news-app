@@ -9,7 +9,7 @@ import { FormInput } from "../../Typography/form";
 import { LargeCardHeader } from "../../Typography/";
 import { Button } from "../SideSectionComponents/Feedback";
 
-const BG = styled.div`
+export const BG = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;

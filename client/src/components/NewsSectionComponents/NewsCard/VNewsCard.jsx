@@ -1,8 +1,9 @@
-import React from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { Card } from "../../Card";
 import { ImCross } from "react-icons/im";
 import { SmallCardHeader, SmallCardParagraph } from "../../../Typography";
+import { Context } from "../../../App";
 
 const CardIn = styled.div`
   display: flex;
@@ -67,9 +68,22 @@ const truncate = (str) => {
 
 export default function VNewsCard({ data }) {
   const { title, published, link, summary } = data;
+  const { state, dispatch } = useContext(Context);
+  const handleClick = () => {
+    dispatch({ type: "link", payload: link });
+    dispatch({ type: "newsmodal", payload: true });
+  };
   return (
     <>
-      <Card width="24%" padding="10px" br="8px" height="40%" m="15px">
+      <Card
+        width="24%"
+        padding="10px"
+        br="8px"
+        height="40%"
+        m="15px"
+        onClick={handleClick}
+        style={{ cursor: "pointer" }}
+      >
         <CardIn>
           <DeleteIconContainer>
             <ImCross style={{ color: "red" }} />

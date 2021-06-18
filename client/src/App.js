@@ -4,6 +4,7 @@ import NewsSection from "./sections/NewsSection";
 import SideSection from "./sections/SideSection";
 import { initialState, reducer } from "./context";
 import FeedBackModal from "./components/Modal/FeedbackModal";
+import NewsModal from "./components/Modal/NewsModal";
 
 export const Context = createContext();
 
@@ -27,6 +28,7 @@ function App() {
           <SideSection />
           <NewsSection />
           <FeedBackModal />
+          <NewsModal />
         </RootContainer>
       </Context.Provider>
     </>
