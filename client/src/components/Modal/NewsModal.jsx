@@ -45,6 +45,7 @@ export default function NewsModal() {
     dispatch({ type: "newsmodal", payload: false });
   };
 
+  // const iframe = `<iframe src="Content-Security-Policy: frame-ancestors 'self' ${link} X-Frame-Options: ALLOW-FROM ${link}" id="frame"></iframe>`;
   const iframe = `<iframe src="${link}" id="frame"></iframe>`;
   function Iframe(props) {
     return (
